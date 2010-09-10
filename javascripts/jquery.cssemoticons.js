@@ -32,8 +32,8 @@
       "&lt;3" : { cssClass: "pink counter-rotated" },
       "O_O": { cssClass: "no-rotate" },
       "o_o": { cssClass: "no-rotate" },
-      "OwO": { cssClass: "no-rotate" },
-      "O-O": { cssClass: "no-rotate" },
+      //"OwO": { cssClass: "no-rotate" }, // these emoticons overflow and look weird even if they're made even smaller, could probably fix this with some more css trickery
+      //"O-O": { cssClass: "no-rotate" },
       "0_o": { cssClass: "no-rotate" },
       "O_o": { cssClass: "no-rotate" },
       "T_T": { cssClass: "no-rotate" },
@@ -62,7 +62,7 @@
     return this.each(function() {
       var container = $(this);
       var cssClass = 'css-emoticon'
-      if(opts.animate){ cssClass += ' un-rotated'; }
+      if(opts.animate){ cssClass += ' un-transformed'; }
       for( var emoticon in specialEmoticons ){
         specialCssClass = cssClass + " " + specialEmoticons[emoticon].cssClass;
         container.html(container.html().replace(specialEmoticons[emoticon].regexp,"<span class='" + specialCssClass + "'>$1</span>"));
@@ -73,7 +73,7 @@
       $(twoCharacterEmoticons).each(function(){                    
         container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1 $2</span>"));
       });
-      setTimeout(function(){$('.un-rotated').removeClass('un-rotated');}, 800);
+      setTimeout(function(){$('.un-transformed').removeClass('un-transformed');}, 800);
     });
   }
 

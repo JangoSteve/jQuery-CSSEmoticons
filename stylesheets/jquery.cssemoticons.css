@@ -48,6 +48,9 @@ transform: rotate(0deg);
 -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+font-size: 0.7em;
+padding: 0.4em;
+line-height: 1.5em;
 background-image: -webkit-gradient(
     linear,
     right bottom,
@@ -96,7 +99,10 @@ span.css-emoticon.pink {
 background: #faa;
 }
 
-span.css-emoticon.un-rotated, span.css-emoticon:hover {
+span.css-emoticon.un-transformed, span.css-emoticon:hover {
+  /* font-size: inherit;
+  font-weight: inherit; */
+  overflow: visible;
   transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
