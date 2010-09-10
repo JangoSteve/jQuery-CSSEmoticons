@@ -52,11 +52,12 @@
     return this.each(function() {
       var container = $(this);
       $(threeCharacterEmoticons).each(function(){
-        container.html(container.html().replace(this,"<span class='css-emoticon'>$1</span>"));
+        container.html(container.html().replace(this,"<span class='css-emoticon un-rotated'>$1</span>"));
       });
       $(twoCharacterEmoticons).each(function(){
-        container.html(container.html().replace(this,"<span class='css-emoticon'>$1 $2</span>"));
+        container.html(container.html().replace(this,"<span class='css-emoticon un-rotated'>$1 $2</span>"));
       });
+      setTimeout(function(){$('.un-rotated').removeClass('un-rotated');}, 800);
     });
   }
 

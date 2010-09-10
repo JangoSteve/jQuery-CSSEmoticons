@@ -5,9 +5,9 @@ font-weight: bold;
 display: inline-block;
 overflow: hidden;
 vertical-align: middle;
--moz-transform: rotate(90deg);
--webkit-transform: rotate(90deg);
 transform: rotate(90deg);
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
 background: #fc0;
 width: 25px;
 height: 25px;
@@ -35,4 +35,20 @@ background-image: -moz-linear-gradient(
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
 );
+-moz-transition: all 1s ease-in-out;
+-o-transition: all 1s ease-in-out;
+-webkit-transition: all 1.5s ease-in-out;
+transition: all 1s ease-in-out;
+}
+
+span.css-emoticon.un-rotated, span.css-emoticon:hover {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  background: none;
+  background-image: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: transparent;
 }
