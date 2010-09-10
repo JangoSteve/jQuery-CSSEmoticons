@@ -1,105 +1,208 @@
+/* Basic styles for emoticons */
 span.css-emoticon {
-font-family: "Trebuchet MS";
-font-size: 0.9em;
-font-weight: bold;
-display: inline-block;
-overflow: hidden;
-vertical-align: middle;
-transform: rotate(90deg);
--webkit-transform: rotate(90deg);
--moz-transform: rotate(90deg);
-background: #fc0;
-width: 1.6em;
-height: 1.6em;
-text-align: center;
-padding: 0;
-line-height: 1.5em;
--moz-border-radius: 1.5em;
--webkit-border-radius: 1.5em;
-border-radius: 1.5em;
--moz-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
--webkit-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
-border: 1px solid rgba(0,0,0,0.25);
-background-image: -webkit-gradient(
+  font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
+  font-size: 0.9em;
+  font-weight: bold;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  width: 1.6em;
+  height: 1.6em;
+  text-align: center;
+  padding: 0;
+  line-height: 1.4em;
+  -moz-border-radius: 1.6em;
+  -webkit-border-radius: 1.6em;
+  border-radius: 1.6em;
+  -moz-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
+  box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.25);
+  background-image: -webkit-gradient(
     linear,
     right top,
     left top,
     color-stop(0.41, rgb(255,204,0)),
     color-stop(0.56, rgb(255,221,85)),
     color-stop(1, rgb(255,238,170))
-);
-background-image: -moz-linear-gradient(
+  );
+  background-image: -moz-linear-gradient(
     center right,
     rgb(255,204,0) 41%,
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
-);
--moz-transition: all 1s ease-in-out;
--o-transition: all 1s ease-in-out;
--webkit-transition: all 1s ease-in-out;
-transition: all 1s ease-in-out;
+  );
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
+/* Styles for additional colors */
+span.css-emoticon.red {
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    color-stop(0.41, rgb(235,5,66)),
+    color-stop(0.56, rgb(235,38,90)),
+    color-stop(1, rgb(250,55,110))
+  );
+  background-image: -moz-linear-gradient(
+    center right,
+    rgb(235,5,66) 41%,
+    rgb(235,38,90) 56%,
+    rgb(250,55,110) 100%
+  );
+}
+
+span.css-emoticon.pink {
+  background-image: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    color-stop(0.41, rgb(255,143,212)),
+    color-stop(0.56, rgb(255,153,216)),
+    color-stop(1,    rgb(255,173,225))
+  );
+  background-image: -moz-linear-gradient(
+    center right,
+    rgb(255,143,212) 41%,
+    rgb(255,153,216) 56%,
+    rgb(255,173,225) 100%
+  );
+}
+
+/* styles for emoticons that need no rotation, like O_o */
 span.css-emoticon.no-rotate { 
-transform: rotate(0deg);
--webkit-transform: rotate(0deg);
--moz-transform: rotate(0deg);
--moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
--webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-font-size: 0.7em;
-padding: 0.4em;
-line-height: 1.5em;
-background-image: -webkit-gradient(
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-size: 0.7em;
+  width: 2.1em;
+  height: 2.1em;
+  line-height: 1.9em;
+  -moz-border-radius: 2.1em;
+  -webkit-border-radius: 2.1em;
+  border-radius: 2.1em;
+  background-image: -webkit-gradient(
     linear,
     right bottom,
     right top,
     color-stop(0.41, rgb(255,204,0)),
     color-stop(0.56, rgb(255,221,85)),
     color-stop(1, rgb(255,238,170))
-);
-background-image: -moz-linear-gradient(
+  );
+  background-image: -moz-linear-gradient(
     center bottom,
     rgb(255,204,0) 41%,
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
-);
+  );
 }
 
+span.css-emoticon.no-rotate.red {
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    right top,
+    color-stop(0.41, rgb(235,5,66)),
+    color-stop(0.56, rgb(235,38,90)),
+    color-stop(1, rgb(250,55,110))
+  );
+  background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(235,5,66) 41%,
+    rgb(235,38,90) 56%,
+    rgb(250,55,110) 100%
+  );
+}
+
+span.css-emoticon.no-rotate.pink {
+  background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    right top,
+    color-stop(0.41, rgb(255,143,212)),
+    color-stop(0.56, rgb(255,153,216)),
+    color-stop(1,    rgb(255,173,225))
+  );
+  background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(255,143,212) 41%,
+    rgb(255,153,216) 56%,
+    rgb(255,173,225) 100%
+  );
+}
+
+/* Styles for emoticons that need to be rotated counter-clockwise, like <3 */
 span.css-emoticon.counter-rotated { 
-transform: rotate(-90deg);
--webkit-transform: rotate(-90deg);
--moz-transform: rotate(-90deg);
--moz-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
--webkit-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
-background-image: -webkit-gradient(
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -moz-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
+  -webkit-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
+  background-image: -webkit-gradient(
     linear,
     left top,
     right top,
     color-stop(0.41, rgb(255,204,0)),
     color-stop(0.56, rgb(255,221,85)),
     color-stop(1, rgb(255,238,170))
-);
-background-image: -moz-linear-gradient(
+  );
+  background-image: -moz-linear-gradient(
     center left,
     rgb(255,204,0) 41%,
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
-);
+  );
 }
 
-
-span.css-emoticon.red {
-background: #f33;
+span.css-emoticon.counter-rotated.red {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.41, rgb(235,5,66)),
+    color-stop(0.56, rgb(235,38,90)),
+    color-stop(1, rgb(250,55,110))
+  );
+  background-image: -moz-linear-gradient(
+    center left,
+    rgb(235,5,66) 41%,
+    rgb(235,38,90) 56%,
+    rgb(250,55,110) 100%
+  );
 }
 
-span.css-emoticon.pink {
-background: #faa;
+span.css-emoticon.counter-rotated.pink {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.41, rgb(255,143,212)),
+    color-stop(0.56, rgb(255,153,216)),
+    color-stop(1,    rgb(255,173,225))
+  );
+  background-image: -moz-linear-gradient(
+    center left,
+    rgb(255,143,212) 41%,
+    rgb(255,153,216) 56%,
+    rgb(255,173,225) 100%
+  );
 }
 
-span.css-emoticon.un-transformed, span.css-emoticon:hover {
+/* Styles for animated states */
+span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:hover {
+  /* uncomment these lines if you want the unstyled animation states to expand to
+  the full font size of the containing text */
   /* font-size: inherit;
   font-weight: inherit; */
   overflow: visible;
@@ -112,4 +215,15 @@ span.css-emoticon.un-transformed, span.css-emoticon:hover {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   border-color: transparent;
+}
+
+/* Styles for emoticons that need to have smaller characters to fit inside the circle */
+span.css-emoticon.small {
+  font-size: 0.8em;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.6em;
+  -moz-border-radius: 1.8em;
+  -webkit-border-radius: 1.8em;
+  border-radius: 1.8em;
 }
