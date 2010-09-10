@@ -16,9 +16,9 @@
 
     return this.each(function() {
       var container = $(this);
-      
+      var emoticon = /(:-\))/;
+      container.html(container.html().replace(emoticon,"<span class='css-emoticon'>$1</span>"));
     });
-
   }
 
   $.fn.cssEmoticons.defaults = {animate: true}
