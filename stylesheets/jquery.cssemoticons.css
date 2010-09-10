@@ -1,7 +1,10 @@
 span.css-emoticon {
-font-size: 16px;
+font-family: "Trebuchet MS";
+font-size: 15px;
 font-weight: bold;
 display: inline-block;
+overflow: hidden;
+vertical-align: middle;
 -moz-transform: rotate(90deg);
 -webkit-transform: rotate(90deg);
 transform: rotate(90deg);
@@ -10,11 +13,26 @@ width: 25px;
 height: 25px;
 text-align: center;
 padding: 0;
-line-height: 24px;
+line-height: 20px;
 -moz-border-radius: 20px;
 -webkit-border-radius: 20px;
 border-radius: 20px;
 -moz-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
 -webkit-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
 box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
+border: 1px solid rgba(0,0,0,0.25);
+background-image: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    color-stop(0.41, rgb(255,204,0)),
+    color-stop(0.56, rgb(255,221,85)),
+    color-stop(1, rgb(255,238,170))
+);
+background-image: -moz-linear-gradient(
+    center right,
+    rgb(255,204,0) 41%,
+    rgb(255,221,85) 56%,
+    rgb(255,238,170) 100%
+);
 }

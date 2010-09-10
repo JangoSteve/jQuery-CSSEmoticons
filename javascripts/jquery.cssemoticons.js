@@ -24,7 +24,15 @@
     
     var twoCharacterEmoticons = [ // separate these out so that we can add a space between the characters for better proportions
       ":)",
-      ":("
+      ":(",
+      "=)",
+      "=(",
+      ":D",
+      ":P",
+      ":p",
+      "=D",
+      "=P",
+      "XD"
     ];
     
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
