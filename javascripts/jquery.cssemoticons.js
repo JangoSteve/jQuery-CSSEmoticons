@@ -14,26 +14,31 @@
 
     var opts = $.extend({}, $.fn.cssEmoticons.defaults, options);
     
-    var escapeCharacters = [ ")", "(" ];
+    var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\" ];
     
     var threeCharacterEmoticons = [
-      ":-)",
-      ":-(",
-      ":'("
+      ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\"
     ];
     
     var twoCharacterEmoticons = [ // separate these out so that we can add a space between the characters for better proportions
-      ":)",
-      ":(",
-      "=)",
-      "=(",
-      ":D",
-      ":P",
-      ":p",
-      "=D",
-      "=P",
-      "XD"
+      ":)", ":]", "=]", "=)", "8)", ":}", ":D", "8D", "XD", "xD", "=D", ":(", ":[", ":{", "=(", ";)", ";]", ";D", ":P", ":p", "=P", "=p", ":b", ":Þ", ":O", "8O", ":/", "=/", ":S", ":#", ":X", "B)", ":|", ":\\", "=\\", ":*", ":&gt;", ":&lt;"//, "*)"
     ];
+    
+    var specialEmoticons = { // emoticons to be treated with a special class, hash specifies the additional class to add, along with standard css-emoticon class
+      "&gt;:)": { cssClass: "red" },
+      "&lt;;)": { cssClass: "red"},
+      "&lt;:(": { cssClass: "red" },
+      ";(":  { cssClass: "red" },
+      "&lt;3" : { cssClass: "pink counter-rotated" },
+      "O_O": { cssClass: "no-rotate" },
+      "o_o": { cssClass: "no-rotate" },
+      "OwO": { cssClass: "no-rotate" },
+      "O-O": { cssClass: "no-rotate" },
+      "0_o": { cssClass: "no-rotate" },
+      "O_o": { cssClass: "no-rotate" },
+      "T_T": { cssClass: "no-rotate" },
+      "^_^": { cssClass: "no-rotate" }
+    }
     
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
     
@@ -48,14 +53,25 @@
         '(' + twoCharacterEmoticons[i][0] + ')(' + twoCharacterEmoticons[i].substring(1,twoCharacterEmoticons[i].length) + ')', 'g' 
       );
     }
+    
+    for ( var emoticon in specialEmoticons ){
+      specialEmoticons[emoticon].regexp = emoticon.replace(specialRegex,'\\$1');
+      specialEmoticons[emoticon].regexp = new RegExp( '(' + specialEmoticons[emoticon].regexp + ')', 'g' );
+    }
 
     return this.each(function() {
       var container = $(this);
+      var cssClass = 'css-emoticon'
+      if(opts.animate){ cssClass += ' un-rotated'; }
+      for( var emoticon in specialEmoticons ){
+        specialCssClass = cssClass + " " + specialEmoticons[emoticon].cssClass;
+        container.html(container.html().replace(specialEmoticons[emoticon].regexp,"<span class='" + specialCssClass + "'>$1</span>"));
+      }
       $(threeCharacterEmoticons).each(function(){
-        container.html(container.html().replace(this,"<span class='css-emoticon un-rotated'>$1</span>"));
-      });
-      $(twoCharacterEmoticons).each(function(){
-        container.html(container.html().replace(this,"<span class='css-emoticon un-rotated'>$1 $2</span>"));
+        container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1</span>"));
+      });                                                          
+      $(twoCharacterEmoticons).each(function(){                    
+        container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1 $2</span>"));
       });
       setTimeout(function(){$('.un-rotated').removeClass('un-rotated');}, 800);
     });

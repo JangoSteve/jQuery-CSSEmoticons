@@ -7,19 +7,32 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.text').cssEmoticons();
+			$('.text').cssEmoticons({
+				//animate: false
+			});
 		})
 	</script>
+	
+	<style type="text/css">
+		#small { font-size: 8px; }
+		#large { font-size: 72px; }
+		#regular { font-size: 16px; }
+	</style>
 </head>
 <body>
-	<p class="text">
+	<p class="text" id="small">
 		Yo, whattup G? :-) :-( This is pretty cool.<br />
 		I'm just writing stuff to see how this stacks up. :)
 	</p>
-	<div class="text">
+	<div class="text" id="large">
 		Nobody wants to play with me :'(
 	</div>
-	<p class="text">
-		XD :P =D
+	<p class="text" id="regular">
+		And here are all of the emoticons: XD :P =D
+		:-) :o) :c) :^) :-D :-( :-9 ;-) :-P :-p :-Þ :-b :-O :-/ :-X :-# :'( B-) 8-) :-\ ;*( :-*
+    :) :] :&gt; =] =) 8) :} :D 8D XD xD =D :( :&lt; :[ :{ =( ;) ;] ;D :P :p =P =p :b :Þ :O 8O :/ =/ :S :# :X B)
+	</p>
+	<p class="text" id="special">
+		&lt;3 O_o ;( 
 	</p>
 </body>
