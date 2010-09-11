@@ -17,7 +17,7 @@
     var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\", "?" ];
     
     var threeCharacterEmoticons = [
-      ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\",
+      ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\", ":{)",
       "?-)" // <== This is my own invention, it's a smiling pirate (with an eye-patch)!
     ];
     
@@ -33,12 +33,14 @@
       "&lt;3":  { cssClass: "pink counter-rotated" },
       "O_O":    { cssClass: "no-rotate" },
       "o_o":    { cssClass: "no-rotate" },
-      //"OwO":  { cssClass: "no-rotate" }, // these emoticons overflow and look weird even if they're made even smaller, could probably fix this with some more css trickery
-      //"O-O":  { cssClass: "no-rotate" },
       "0_o":    { cssClass: "no-rotate" },
       "O_o":    { cssClass: "no-rotate" },
       "T_T":    { cssClass: "no-rotate" },
-      "^_^":    { cssClass: "no-rotate" }
+      "^_^":    { cssClass: "no-rotate" },
+      "O:)":    { cssClass: "small" },
+      //"OwO":  { cssClass: "no-rotate" }, // these emoticons overflow and look weird even if they're made even smaller, could probably fix this with some more css trickery
+      //"O-O":  { cssClass: "no-rotate" },
+      //"O=)":    { cssClass: "small" } 
     }
     
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
