@@ -87,18 +87,28 @@
       $('span.css-emoticon > span.css-emoticon').each(function(){
         $(this).parent().html($(this).parent().text());
       });
-      setTimeout(function(){$('.un-transformed-emoticon').removeClass('un-transformed-emoticon');}, 800);
+      if(opts.animate){
+        setTimeout(function(){$('.un-transformed-emoticon').removeClass('un-transformed-emoticon');}, opts.delay);
+      }
     });
   }
   
   $.fn.unemoticonize = function(options) {
+    var opts = $.extend({}, $.fn.emoticonize.defaults, options);
     return this.each(function() {
       var container = $(this);
       container.find('span.css-emoticon').each(function(){
-        $(this).replaceWith($(this).text());
+        // add delay equal to animate speed if animate is not false
+        var span = $(this);
+        if(opts.animate){
+          span.addClass('un-transformed-emoticon');
+          setTimeout(function(){span.replaceWith(span.text());}, opts.delay); 
+        }else{
+          span.replaceWith(span.text());
+        }
       });
     });
   }
 
-  $.fn.emoticonize.defaults = {animate: true}
+  $.fn.emoticonize.defaults = {animate: true, delay: 500}
 })(jQuery);

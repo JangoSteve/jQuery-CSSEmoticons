@@ -38,7 +38,8 @@ And in the head of your document, you include the files and cssEmoticonize the d
 
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.text').cssEmoticons({
+      $('.comment').emoticonize({
+			  //delay: 800,
         //animate: false
       });
     })
@@ -48,6 +49,12 @@ And in the head of your document, you include the files and cssEmoticonize the d
   ...
 </body>
 
-There is one optional parameter called animate (true by default), which animates the emoticons on page load and when you hover over them to show you the transition from the original text to the stylized emoticon. To see this animation effect, view the demo with Chrome or Safari.
+There are two optional parameters. One called animate (true by default), which animates the emoticons on page load and when you hover over them to show you the transition from the original text to the stylized emoticon. To see this animation effect, view the demo with Chrome or Safari. The other is delay (500 by default), which allows you to set how long the browser waits (in milliseconds) before styling up the emoticons (which makes the animation stand out more, otherwise it happens too quickly and loses some of its effect).
+
+If for some reason, you’d like to “unemoticonize” any of your elements, well there’s a function for that.
+
+$('.comment').unemoticonize();
+
+I’d write more documentation, but really that’s all there is to it. Enjoy!
 
 View the Live Demo: http://www.alfajango.com/blog/jquery-css-emoticons-plugin/jquery-css-emoticons-demo/
