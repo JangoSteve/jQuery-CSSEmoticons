@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2
+ * jQuery CSSEmoticons plugin 0.2.1
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -7,7 +7,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Date: Fri Sep 10 01:02:00 2010 -0500
+ * Date: Sun Sep 12 01:02:00 2010 -0500
  */
 (function($) {
   $.fn.emoticonize = function(options) {
