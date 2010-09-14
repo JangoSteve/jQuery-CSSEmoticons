@@ -1,4 +1,16 @@
-/* Basic styles for emoticons */
+/*
+ * jQuery CSSEmoticons plugin 0.2.2
+ *
+ * Copyright (c) 2010 Steve Schwartz (JangoSteve)
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Date: Sun Sep 12 01:02:00 2010 -0500
+ */
+ 
+ /* Basic styles for emoticons */
 span.css-emoticon {
   font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
   font-size: 0.9em;
@@ -41,8 +53,32 @@ span.css-emoticon {
   transition: all 1s ease-in-out;
 }
 
+/* Styles for two-character emoticons that need more letter-spacing for proportionality */
+span.css-emoticon.spaced-emoticon {
+  padding-left: 0.25em;
+  width: 1.35em;
+  letter-spacing: 0.2em;
+}
+
+/* Styles for emoticons that need to have smaller characters to fit inside the circle */
+span.css-emoticon.small-emoticon {
+  font-size: 0.8em;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.6em;
+  -moz-border-radius: 1.8em;
+  -webkit-border-radius: 1.8em;
+  border-radius: 1.8em;
+}
+
+span.css-emoticon.small-emoticon.spaced-emoticon {
+  padding-left: 0;
+  width: 1.8em;
+  letter-spacing: 0.1em;
+}
+
 /* Styles for additional colors */
-span.css-emoticon.red {
+span.css-emoticon.red-emoticon {
   background-image: -webkit-gradient(
     linear,
     right top,
@@ -59,7 +95,7 @@ span.css-emoticon.red {
   );
 }
 
-span.css-emoticon.pink {
+span.css-emoticon.pink-emoticon {
   background-image: -webkit-gradient(
     linear,
     right top,
@@ -107,7 +143,7 @@ span.css-emoticon.no-rotate {
   );
 }
 
-span.css-emoticon.no-rotate.red {
+span.css-emoticon.no-rotate.red-emoticon {
   background-image: -webkit-gradient(
     linear,
     right bottom,
@@ -124,7 +160,7 @@ span.css-emoticon.no-rotate.red {
   );
 }
 
-span.css-emoticon.no-rotate.pink {
+span.css-emoticon.no-rotate.pink-emoticon {
   background-image: -webkit-gradient(
     linear,
     right bottom,
@@ -165,7 +201,7 @@ span.css-emoticon.counter-rotated {
   );
 }
 
-span.css-emoticon.counter-rotated.red {
+span.css-emoticon.counter-rotated.red-emoticon {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -182,7 +218,7 @@ span.css-emoticon.counter-rotated.red {
   );
 }
 
-span.css-emoticon.counter-rotated.pink {
+span.css-emoticon.counter-rotated.pink-emoticon {
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -215,15 +251,5 @@ span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:h
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   border-color: transparent;
-}
-
-/* Styles for emoticons that need to have smaller characters to fit inside the circle */
-span.css-emoticon.small {
-  font-size: 0.8em;
-  width: 1.8em;
-  height: 1.8em;
-  line-height: 1.6em;
-  -moz-border-radius: 1.8em;
-  -webkit-border-radius: 1.8em;
-  border-radius: 1.8em;
+  letter-spacing: inherit;
 }

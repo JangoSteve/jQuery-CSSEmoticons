@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.1
+ * jQuery CSSEmoticons plugin 0.2.2
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -17,37 +17,41 @@
     var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\", "?" ];
     
     var threeCharacterEmoticons = [
-      ": {)", // this one gets matched by the two-char regex and adds a space... actually looks better this way, but we need to also capture the version with a space already
       ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\", ":{)",
       "?-)", // <== This is my own invention, it's a smiling pirate (with an eye-patch)!
-      // and the twoCharacterEmoticons from below, but with the space already inserted
+      // and the twoCharacterEmoticons from below, but with a space inserted
       ": )", ": ]", "= ]", "= )", "8 )", ": }", ": D", "8 D", "X D", "x D", "= D", ": (", ": [", ": {", "= (", "; )", "; ]", "; D", ": P", ": p", "= P", "= p", ": b", ": Þ", ": O", "8 O", ": /", "= /", ": S", ": #", ": X", "B )", ": |", ": \\", "= \\", ": *", ": &gt;", ": &lt;"//, "* )"
     ];
     
-    var twoCharacterEmoticons = [ // separate these out so that we can add a space between the characters for better proportions
-      ":)", ":]", "=]", "=)", "8)", ":}", ":D", "8D", "XD", "xD", "=D", ":(", ":[", ":{", "=(", ";)", ";]", ";D", ":P", ":p", "=P", "=p", ":b", ":Þ", ":O", "8O", ":/", "=/", ":S", ":#", ":X", "B)", ":|", ":\\", "=\\", ":*", ":&gt;", ":&lt;"//, "*)"
+    var twoCharacterEmoticons = [ // separate these out so that we can add a letter-spacing between the characters for better proportions
+      ":)", ":]", "=]", "=)", "8)", ":}", ":D", ":(", ":[", ":{", "=(", ";)", ";]", ";D", ":P", ":p", "=P", "=p", ":b", ":Þ", ":O", ":/", "=/", ":S", ":#", ":X", "B)", ":|", ":\\", "=\\", ":*", ":&gt;", ":&lt;"//, "*)"
     ];
     
     var specialEmoticons = { // emoticons to be treated with a special class, hash specifies the additional class to add, along with standard css-emoticon class
-      "&gt;:)": { cssClass: "red small" },
-      "&gt;;)": { cssClass: "red small"},
-      "&gt;:(": { cssClass: "red small" },
-      "&gt;: )": { cssClass: "red small" }, // two-char captures basically any emoticon with something above the eyes and adds a space... looks better this way, but we need to also capture the versions with spaces already
-      "&gt;; )": { cssClass: "red small"},
-      "&gt;: (": { cssClass: "red small" },
-      ";(":     { cssClass: "red" },
-      "&lt;3":  { cssClass: "pink counter-rotated" },
+      "&gt;:)": { cssClass: "red-emoticon small-emoticon spaced-emoticon" },
+      "&gt;;)": { cssClass: "red-emoticon small-emoticon spaced-emoticon"},
+      "&gt;:(": { cssClass: "red-emoticon small-emoticon spaced-emoticon" },
+      "&gt;: )": { cssClass: "red-emoticon small-emoticon" },
+      "&gt;; )": { cssClass: "red-emoticon small-emoticon"},
+      "&gt;: (": { cssClass: "red-emoticon small-emoticon" },
+      ";(":     { cssClass: "red-emoticon spaced-emoticon" },
+      "&lt;3":  { cssClass: "pink-emoticon counter-rotated" },
       "O_O":    { cssClass: "no-rotate" },
       "o_o":    { cssClass: "no-rotate" },
       "0_o":    { cssClass: "no-rotate" },
       "O_o":    { cssClass: "no-rotate" },
       "T_T":    { cssClass: "no-rotate" },
       "^_^":    { cssClass: "no-rotate" },
-      "O:)":    { cssClass: "small" },
-      "O: )":    { cssClass: "small" },
+      "O:)":    { cssClass: "small-emoticon spaced-emoticon" },
+      "O: )":   { cssClass: "small-emoticon" },
+      "8D":     { cssClass: "small-emoticon spaced-emoticon" },
+      "XD":     { cssClass: "small-emoticon spaced-emoticon" },
+      "xD":     { cssClass: "small-emoticon spaced-emoticon" },
+      "=D":     { cssClass: "small-emoticon spaced-emoticon" },
+      "8O":     { cssClass: "small-emoticon spaced-emoticon" }
       //"OwO":  { cssClass: "no-rotate" }, // these emoticons overflow and look weird even if they're made even smaller, could probably fix this with some more css trickery
       //"O-O":  { cssClass: "no-rotate" },
-      //"O=)":    { cssClass: "small" } 
+      //"O=)":    { cssClass: "small-emoticon" } 
     }
     
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
@@ -59,9 +63,7 @@
     
     for ( var i=twoCharacterEmoticons.length-1; i>=0; --i ){
       twoCharacterEmoticons[i] = twoCharacterEmoticons[i].replace(specialRegex,'\\$1');
-      twoCharacterEmoticons[i] = new RegExp( 
-        '(' + twoCharacterEmoticons[i][0] + ')(' + twoCharacterEmoticons[i].substring(1,twoCharacterEmoticons[i].length) + ')', 'g' 
-      );
+      twoCharacterEmoticons[i] = new RegExp( '(' + twoCharacterEmoticons[i] + ')', 'g' );
     }
     
     for ( var emoticon in specialEmoticons ){
@@ -81,7 +83,7 @@
         container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1</span>"));
       });                                                          
       $(twoCharacterEmoticons).each(function(){                    
-        container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1 $2</span>"));
+        container.html(container.html().replace(this,"<span class='" + cssClass + " spaced-emoticon'>$1</span>"));
       });
       // fix emoticons that got matched more then once (where one emoticon is a subset of another emoticon), and thus got nested spans
       $('span.css-emoticon > span.css-emoticon').each(function(){
