@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.4
+ * jQuery CSSEmoticons plugin 0.2.5
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -7,7 +7,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Date: Sun Sep 17 01:02:00 2010 -0500
+ * Date: Sun Sep 18 18:06:00 2010 -0500
  */
 (function($) {
   $.fn.emoticonize = function(options) {
@@ -80,11 +80,16 @@
       specialEmoticons[emoticon].regexp = emoticon.replace(specialRegex,'\\$1');
       specialEmoticons[emoticon].regexp = new RegExp( preMatch+'(' + specialEmoticons[emoticon].regexp + ')', 'g' );
     }
+    
+    var exclude = 'span.css-emoticon';
+    if(opts.exclude){ exclude += ','+opts.exclude; }
+    var excludeArray = exclude.split(',')
 
-    return this.each(function() {
+    return this.not(exclude).each(function() {
       var container = $(this);
       var cssClass = 'css-emoticon'
       if(opts.animate){ cssClass += ' un-transformed-emoticon animated-emoticon'; }
+      
       for( var emoticon in specialEmoticons ){
         specialCssClass = cssClass + " " + specialEmoticons[emoticon].cssClass;
         container.html(container.html().replace(specialEmoticons[emoticon].regexp,"$1<span class='" + specialCssClass + "'>$2</span>"));
@@ -96,9 +101,11 @@
         container.html(container.html().replace(this,"$1<span class='" + cssClass + " spaced-emoticon'>$2</span>"));
       });
       // fix emoticons that got matched more then once (where one emoticon is a subset of another emoticon), and thus got nested spans
-      $('span.css-emoticon > span.css-emoticon').each(function(){
-        $(this).parent().html($(this).parent().text());
-      });
+      for (selector in excludeArray){
+        container.find(excludeArray[selector].trim()+" span.css-emoticon").each(function(){
+          $(this).replaceWith($(this).text());
+        });
+      }
       if(opts.animate){
         setTimeout(function(){$('.un-transformed-emoticon').removeClass('un-transformed-emoticon');}, opts.delay);
       }
@@ -122,5 +129,5 @@
     });
   }
 
-  $.fn.emoticonize.defaults = {animate: true, delay: 500}
+  $.fn.emoticonize.defaults = {animate: true, delay: 500, exclude: 'pre,code,.no-emoticons'}
 })(jQuery);

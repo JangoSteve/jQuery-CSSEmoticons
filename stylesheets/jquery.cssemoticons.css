@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.4
+ * jQuery CSSEmoticons plugin 0.2.5
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -7,28 +7,29 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Date: Sun Sep 12 01:02:00 2010 -0500
+ * Date: Sun Sep 18 18:06:00 2010 -0500
  */
  
  /* Basic styles for emoticons */
 span.css-emoticon {
   font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
-  font-size: 0.9em;
+  font-size: 0.65em;
   font-weight: bold;
+  color: #000;
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
-  width: 1.6em;
-  height: 1.6em;
+  width: 1.54em; /* note that this is a multiple of this span's font-size, not containing text font-size */
+  height: 1.54em; /* so, relative to containing text, width and height are 0.9 x 1.6 = 1.44em */
   text-align: center;
   padding: 0;
-  line-height: 1.4em;
-  -moz-border-radius: 1.6em;
-  -webkit-border-radius: 1.6em;
-  border-radius: 1.6em;
+  line-height: 1.3em;
+  -moz-border-radius: 1.54em;
+  -webkit-border-radius: 1.54em;
+  border-radius: 1.54em;
   -moz-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
   box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
@@ -55,25 +56,25 @@ span.css-emoticon {
 
 /* Styles for two-character emoticons that need more letter-spacing for proportionality */
 span.css-emoticon.spaced-emoticon {
-  padding-left: 0.25em;
-  width: 1.35em;
+  padding-left: 0.2em;
+  width: 1.34em;
   letter-spacing: 0.2em;
 }
 
 /* Styles for emoticons that need to have smaller characters to fit inside the circle */
 span.css-emoticon.small-emoticon {
-  font-size: 0.8em;
-  width: 1.8em;
-  height: 1.8em;
+  font-size: 0.55em;
+  width: 1.82em;
+  height: 1.82em;
   line-height: 1.6em;
-  -moz-border-radius: 1.8em;
-  -webkit-border-radius: 1.8em;
-  border-radius: 1.8em;
+  -moz-border-radius: 1.82em;
+  -webkit-border-radius: 1.82em;
+  border-radius: 1.82em;
 }
 
 span.css-emoticon.small-emoticon.spaced-emoticon {
   padding-left: 0;
-  width: 1.8em;
+  width: 1.82em;
   letter-spacing: 0.1em;
 }
 
@@ -120,13 +121,13 @@ span.css-emoticon.no-rotate {
   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  font-size: 0.7em;
-  width: 2.1em;
-  height: 2.1em;
+  font-size: 0.45em;
+  width: 2.2em;
+  height: 2.2em;
   line-height: 1.9em;
-  -moz-border-radius: 2.1em;
-  -webkit-border-radius: 2.1em;
-  border-radius: 2.1em;
+  -moz-border-radius: 2.2em;
+  -webkit-border-radius: 2.2em;
+  border-radius: 2.2em;
   background-image: -webkit-gradient(
     linear,
     right bottom,
