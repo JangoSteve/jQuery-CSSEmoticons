@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.2
+ * jQuery CSSEmoticons plugin 0.2.3
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -17,7 +17,12 @@
     var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\", "?" ];
     
     var threeCharacterEmoticons = [
-      ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\", ":{)",
+        // really weird bug if you have :{ and then have :{) in the same container anywhere *after* :{ then :{ doesn't get matched, e.g. :] :{ :) :{) :) :-) will match everything except :{
+        //  But if you take out the :{) or even just move :{ to the right of :{) then everything works fine. This has something to do with the preMatch string below I think, because
+        //  it'll work again if you set preMatch equal to '()'
+        //  So for now, we'll just remove :{) from the emoticons, because who actually uses this mustache man anyway?
+      // ":{)",
+      ":-)", ":o)", ":c)", ":^)", ":-D", ":-(", ":-9", ";-)", ":-P", ":-p", ":-Þ", ":-b", ":-O", ":-/", ":-X", ":-#", ":'(", "B-)", "8-)", ";*(", ":-*", ":-\\",
       "?-)", // <== This is my own invention, it's a smiling pirate (with an eye-patch)!
       // and the twoCharacterEmoticons from below, but with a space inserted
       ": )", ": ]", "= ]", "= )", "8 )", ": }", ": D", "8 D", "X D", "x D", "= D", ": (", ": [", ": {", "= (", "; )", "; ]", "; D", ": P", ": p", "= P", "= p", ": b", ": Þ", ": O", "8 O", ": /", "= /", ": S", ": #", ": X", "B )", ": |", ": \\", "= \\", ": *", ": &gt;", ": &lt;"//, "* )"
@@ -55,20 +60,24 @@
     }
     
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
+    // One of these characters must be present before the matched emoticon, or the matched emoticon must be the first character in the container HTML
+    //  This is to ensure that the characters in the middle of HTML properties or URLs are not matched as emoticons
+    //  Below matches ^ (first character in container HTML), \s (whitespace like space or tab), or \0 (NULL character), or <\\S+.*> (matches an HTML tag like <span> or <div>)
+    var preMatch = '(^|[\\s\\0(<\\S+.*>)])';
     
     for ( var i=threeCharacterEmoticons.length-1; i>=0; --i ){
       threeCharacterEmoticons[i] = threeCharacterEmoticons[i].replace(specialRegex,'\\$1');
-      threeCharacterEmoticons[i] = new RegExp( '(' + threeCharacterEmoticons[i] + ')', 'g' );
+      threeCharacterEmoticons[i] = new RegExp( preMatch+'(' + threeCharacterEmoticons[i] + ')', 'g' );
     }
     
     for ( var i=twoCharacterEmoticons.length-1; i>=0; --i ){
       twoCharacterEmoticons[i] = twoCharacterEmoticons[i].replace(specialRegex,'\\$1');
-      twoCharacterEmoticons[i] = new RegExp( '(' + twoCharacterEmoticons[i] + ')', 'g' );
+      twoCharacterEmoticons[i] = new RegExp( preMatch+'(' + twoCharacterEmoticons[i] + ')', 'g' );
     }
     
     for ( var emoticon in specialEmoticons ){
       specialEmoticons[emoticon].regexp = emoticon.replace(specialRegex,'\\$1');
-      specialEmoticons[emoticon].regexp = new RegExp( '(' + specialEmoticons[emoticon].regexp + ')', 'g' );
+      specialEmoticons[emoticon].regexp = new RegExp( preMatch+'(' + specialEmoticons[emoticon].regexp + ')', 'g' );
     }
 
     return this.each(function() {
@@ -77,13 +86,13 @@
       if(opts.animate){ cssClass += ' un-transformed-emoticon animated-emoticon'; }
       for( var emoticon in specialEmoticons ){
         specialCssClass = cssClass + " " + specialEmoticons[emoticon].cssClass;
-        container.html(container.html().replace(specialEmoticons[emoticon].regexp,"<span class='" + specialCssClass + "'>$1</span>"));
+        container.html(container.html().replace(specialEmoticons[emoticon].regexp,"$1<span class='" + specialCssClass + "'>$2</span>"));
       }
       $(threeCharacterEmoticons).each(function(){
-        container.html(container.html().replace(this,"<span class='" + cssClass + "'>$1</span>"));
+        container.html(container.html().replace(this,"$1<span class='" + cssClass + "'>$2</span>"));
       });                                                          
       $(twoCharacterEmoticons).each(function(){                    
-        container.html(container.html().replace(this,"<span class='" + cssClass + " spaced-emoticon'>$1</span>"));
+        container.html(container.html().replace(this,"$1<span class='" + cssClass + " spaced-emoticon'>$2</span>"));
       });
       // fix emoticons that got matched more then once (where one emoticon is a subset of another emoticon), and thus got nested spans
       $('span.css-emoticon > span.css-emoticon').each(function(){

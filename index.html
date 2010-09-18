@@ -32,6 +32,7 @@
 		#small { font-size: 8px; }
 		#large { font-size: 72px; }
 		#regular { font-size: 16px; }
+		.wrapped { width: 300px; }
 	</style>
 </head>
 <body>
@@ -44,11 +45,17 @@
 		Yo, this is some tiny text. :-)<br />
 		This is how emoticons stack up in a paragraph B)
 	</p>
+	<p class="text wrapped" id="regular">:O
+	  Here is an example of what emoticons look like in a paragraph :-) You can tell here that the emoticons don't break the line-height like other image-replacement methods tend to.
+	  Also, here is <a href="http://www.alfajango.com/blog/jquery-css-emoticons-plugin/">a link to the documentation</a>, as well as a printed URL: http://www.alfajango.com, and one in a nested element
+	  <span>:-)</span>
+	</p>
 	<hr />
 	<p class="text" id="regular">
 		Here are all of the emoticons currently supported (though it's easy to add your own):
+:-)
 		:-) :) :o) :c) :^) :-D :-( :-9 ;-) :-P :-p :-Þ :-b :-O :-/ :-X :-# :'( B-) 8-) :-\ ;*( :-*
-    :] :&gt; =] =) 8) :} :D 8D XD xD =D :( :&lt; :[ :{ =( ;) ;] ;D :P :p =P =p :b :Þ :O 8O :/ =/ :S :# :X B) O:) :{)
+    :] :&gt; =] =) 8) :} :D 8D XD xD =D :( :&lt; :[ :{ =( ;) ;] ;D :P :p =P =p :b :Þ :O 8O :/ =/ :S :# :X B) O:)
 	</p>
 	<p class="text" id="regular">
 		And some special emoticons: &lt;3 ;( &gt;:) &gt;;) &gt;:( O_o O_O o_o 0_o T_T ^_^ ?-)
