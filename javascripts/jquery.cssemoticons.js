@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.3
+ * jQuery CSSEmoticons plugin 0.2.4
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -7,7 +7,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Date: Sun Sep 12 01:02:00 2010 -0500
+ * Date: Sun Sep 17 01:02:00 2010 -0500
  */
 (function($) {
   $.fn.emoticonize = function(options) {
@@ -62,8 +62,9 @@
     var specialRegex = new RegExp( '(\\' + escapeCharacters.join('|\\') + ')', 'g' );
     // One of these characters must be present before the matched emoticon, or the matched emoticon must be the first character in the container HTML
     //  This is to ensure that the characters in the middle of HTML properties or URLs are not matched as emoticons
-    //  Below matches ^ (first character in container HTML), \s (whitespace like space or tab), or \0 (NULL character), or <\\S+.*> (matches an HTML tag like <span> or <div>)
-    var preMatch = '(^|[\\s\\0(<\\S+.*>)])';
+    //  Below matches ^ (first character in container HTML), \s (whitespace like space or tab), or \0 (NULL character)
+    // (<\\S+.*>) matches <\\S+.*> (matches an HTML tag like <span> or <div>), but haven't quite gotten it working yet, need to push this fix now
+    var preMatch = '(^|[\\s\\0])';
     
     for ( var i=threeCharacterEmoticons.length-1; i>=0; --i ){
       threeCharacterEmoticons[i] = threeCharacterEmoticons[i].replace(specialRegex,'\\$1');
