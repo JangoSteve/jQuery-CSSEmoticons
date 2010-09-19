@@ -1,4 +1,4 @@
-jQuery CSSEmoticons plugin 0.2.1
+jQuery CSSEmoticons plugin 0.2.7
 
 Copyright (c) 2010 Steve Schwartz (JangoSteve)
 
@@ -41,6 +41,7 @@ And in the head of your document, you include the files and cssEmoticonize the d
       $('.comment').emoticonize({
 			  //delay: 800,
         //animate: false
+        //exclude: 'pre, code, .no-emoticons'
       });
     })
   </script>
@@ -49,7 +50,7 @@ And in the head of your document, you include the files and cssEmoticonize the d
   ...
 </body>
 
-There are two optional parameters. One called animate (true by default), which animates the emoticons on page load and when you hover over them to show you the transition from the original text to the stylized emoticon. To see this animation effect, view the demo with Chrome or Safari. The other is delay (500 by default), which allows you to set how long the browser waits (in milliseconds) before styling up the emoticons (which makes the animation stand out more, otherwise it happens too quickly and loses some of its effect).
+There are three optional parameters. One called animate (true by default), which animates the emoticons on page-load and when you hover over them to show you the transition from the original text to the stylized emoticon. To see this animation effect, view the demo with Chrome or Safari. The second parameter is delay (500 by default), which allows you to set how long the browser waits (in milliseconds) before styling up the emoticons (which makes the animation stand out more, otherwise it happens too quickly and loses some of its effect). That third parameter is exclude (''pre, code, .no-emoticons' by default), which allows you to exclude elements from being emoticonized using CSS selectors.
 
 If for some reason, you’d like to “unemoticonize” any of your elements, well there’s a function for that.
 
