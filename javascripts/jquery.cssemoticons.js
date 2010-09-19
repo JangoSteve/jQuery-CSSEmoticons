@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.5
+ * jQuery CSSEmoticons plugin 0.2.6
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
