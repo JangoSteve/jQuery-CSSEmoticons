@@ -26,7 +26,7 @@ span.css-emoticon {
   height: 1.54em; /* so, relative to containing text, width and height are 0.9 x 1.6 = 1.44em */
   text-align: center;
   padding: 0;
-  line-height: 1.3em;
+  line-height: 1.34em;
   -moz-border-radius: 1.54em;
   -webkit-border-radius: 1.54em;
   border-radius: 1.54em;
@@ -48,10 +48,9 @@ span.css-emoticon {
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
   );
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+  -webkit-transition-property:color, background, transform;  
+  -webkit-transition-duration: 1s, 1s;  
+  -webkit-transition-timing-function: linear, ease-in;
 }
 
 /* Styles for two-character emoticons that need more letter-spacing for proportionality */
@@ -61,12 +60,20 @@ span.css-emoticon.spaced-emoticon {
   letter-spacing: 0.2em;
 }
 
+/* This is a dirty dirty hack, because webkit doesn't properly do the padding+width=total-width as it should
+   I think the width of the border may be throwing things off, because it's more noticable for small icons */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  span.css-emoticon.spaced-emoticon {
+    width: 1.4em;
+  }
+}
+
 /* Styles for emoticons that need to have smaller characters to fit inside the circle */
 span.css-emoticon.small-emoticon {
   font-size: 0.55em;
   width: 1.82em;
   height: 1.82em;
-  line-height: 1.6em;
+  line-height: 1.72em;
   -moz-border-radius: 1.82em;
   -webkit-border-radius: 1.82em;
   border-radius: 1.82em;
@@ -238,19 +245,21 @@ span.css-emoticon.counter-rotated.pink-emoticon {
 
 /* Styles for animated states */
 span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:hover {
-  /* uncomment these lines if you want the unstyled animation states to expand to
-  the full font size of the containing text */
-  /* font-size: inherit;
-  font-weight: inherit; */
-  overflow: visible;
-  transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  background: none;
-  background-image: none;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  border-color: transparent;
-  letter-spacing: inherit;
+    /* font-size: inherit;
+    font-weight: inherit;
+    vertical-align: inherit;
+    line-height: inherit; */
+    letter-spacing: inherit;
+    color: inherit;
+    font-family: inherit;
+    overflow: visible;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    background: none;
+    background-image: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: transparent;
 }
