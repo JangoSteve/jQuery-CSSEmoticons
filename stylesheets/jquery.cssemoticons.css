@@ -1,5 +1,5 @@
 /*
- * jQuery CSSEmoticons plugin 0.2.7
+ * jQuery CSSEmoticons plugin 0.2.8
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
  *
@@ -7,7 +7,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * Date: Sun Sep 18 18:06:00 2010 -0500
+ * Date: Sun Sep 20 10:00:00 2010 -0500
  */
  
  /* Basic styles for emoticons */
@@ -15,13 +15,14 @@ span.css-emoticon {
   font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
   font-size: 0.65em;
   font-weight: bold;
-  color: #000;
+  color: #000000;
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
   width: 1.54em; /* note that this is a multiple of this span's font-size, not containing text font-size */
   height: 1.54em; /* so, relative to containing text, width and height are 0.9 x 1.6 = 1.44em */
   text-align: center;
@@ -34,6 +35,7 @@ span.css-emoticon {
   -webkit-box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
   box-shadow: 1px -1px 2px rgba(0,0,0,0.5);
   border: 1px solid rgba(0,0,0,0.25);
+  background-color: #ffcc00;
   background-image: -webkit-gradient(
     linear,
     right top,
@@ -87,6 +89,7 @@ span.css-emoticon.small-emoticon.spaced-emoticon {
 
 /* Styles for additional colors */
 span.css-emoticon.red-emoticon {
+  background-color: #eb0542;
   background-image: -webkit-gradient(
     linear,
     right top,
@@ -104,6 +107,7 @@ span.css-emoticon.red-emoticon {
 }
 
 span.css-emoticon.pink-emoticon {
+  background-color: #ff8fd4;
   background-image: -webkit-gradient(
     linear,
     right top,
@@ -125,6 +129,7 @@ span.css-emoticon.no-rotate {
   transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -190,6 +195,7 @@ span.css-emoticon.counter-rotated {
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
   -moz-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
   box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
@@ -248,14 +254,15 @@ span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:h
     /* font-size: inherit;
     font-weight: inherit;
     vertical-align: inherit;
-    line-height: inherit; */
+    line-height: inherit;
+    font-family: inherit; */
     letter-spacing: inherit;
     color: inherit;
-    font-family: inherit;
     overflow: visible;
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
     background: none;
     background-image: none;
     box-shadow: none;
