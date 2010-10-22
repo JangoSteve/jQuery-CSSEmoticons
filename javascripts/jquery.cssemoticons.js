@@ -14,7 +14,7 @@
 
     var opts = $.extend({}, $.fn.emoticonize.defaults, options);
     
-    var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\", "?" ];
+    var escapeCharacters = [ ")", "(", "*", "[", "]", "{", "}", "|", "^", "<", ">", "\\", "?", "+", "=", "." ];
     
     var threeCharacterEmoticons = [
         // really weird bug if you have :{ and then have :{) in the same container anywhere *after* :{ then :{ doesn't get matched, e.g. :] :{ :) :{) :) :-) will match everything except :{
@@ -53,7 +53,8 @@
       "XD":     { cssClass: "small-emoticon spaced-emoticon" },
       "xD":     { cssClass: "small-emoticon spaced-emoticon" },
       "=D":     { cssClass: "small-emoticon spaced-emoticon" },
-      "8O":     { cssClass: "small-emoticon spaced-emoticon" }
+      "8O":     { cssClass: "small-emoticon spaced-emoticon" },
+      "[+=..]":  { cssClass: "no-rotate nintendo-controller" }
       //"OwO":  { cssClass: "no-rotate" }, // these emoticons overflow and look weird even if they're made even smaller, could probably fix this with some more css trickery
       //"O-O":  { cssClass: "no-rotate" },
       //"O=)":    { cssClass: "small-emoticon" } 

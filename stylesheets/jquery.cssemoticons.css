@@ -270,3 +270,26 @@ span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:h
     -webkit-box-shadow: none;
     border-color: transparent;
 }
+
+span.css-emoticon.nintendo-controller {
+  font-size: .8em;
+  height: 1.2em;
+  line-height: 1em;
+  width: 2.7em;
+  vertical-align: bottom;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.09, rgb(116,121,140)),
+      color-stop(0.55, rgb(165,170,189))
+  );
+  background: -moz-linear-gradient(
+      center bottom,
+      rgb(116,121,140) 9%,
+      rgb(165,170,189) 55%
+  );
+}
