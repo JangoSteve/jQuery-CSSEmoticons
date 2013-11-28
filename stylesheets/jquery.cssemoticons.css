@@ -19,10 +19,10 @@ span.css-emoticon {
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
-  transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
+  transform: rotate(90deg);
   width: 1.54em; /* note that this is a multiple of this span's font-size, not containing text font-size */
   height: 1.54em; /* so, relative to containing text, width and height are 0.9 x 1.6 = 1.44em */
   text-align: center;
@@ -51,8 +51,11 @@ span.css-emoticon {
     rgb(255,238,170) 100%
   );
   -webkit-transition-property:color, background, transform;  
+  transition-property:color, background, transform;
   -webkit-transition-duration: 1s, 1s;  
+  transition-duration: 1s, 1s;
   -webkit-transition-timing-function: linear, ease-in;
+  transition-timing-function: linear, ease-in;
 }
 
 /* Styles for two-character emoticons that need more letter-spacing for proportionality */
@@ -126,10 +129,10 @@ span.css-emoticon.pink-emoticon {
 
 /* styles for emoticons that need no rotation, like O_o */
 span.css-emoticon.no-rotate { 
-  transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
+  transform: rotate(0deg);
   -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -192,10 +195,10 @@ span.css-emoticon.no-rotate.pink-emoticon {
 
 /* Styles for emoticons that need to be rotated counter-clockwise, like <3 */
 span.css-emoticon.counter-rotated { 
-  transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
   -moz-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
   -webkit-box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
   box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
@@ -259,15 +262,15 @@ span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:h
     letter-spacing: inherit;
     color: inherit;
     overflow: visible;
-    transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
+	transform: rotate(0deg);
     background: none;
     background-image: none;
-    box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
+	box-shadow: none;
     border-color: transparent;
 }
 
@@ -277,9 +280,9 @@ span.css-emoticon.nintendo-controller {
   line-height: 1em;
   width: 2.7em;
   vertical-align: bottom;
-  border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
+  border-radius: 0;
   background: -webkit-gradient(
       linear,
       left bottom,
