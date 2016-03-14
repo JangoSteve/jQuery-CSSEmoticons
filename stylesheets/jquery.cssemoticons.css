@@ -53,6 +53,18 @@ span.css-emoticon {
   -webkit-transition-property:color, background, transform;  
   -webkit-transition-duration: 1s, 1s;  
   -webkit-transition-timing-function: linear, ease-in;
+
+  -moz-transition-property:color, background, transform;  
+  -moz-transition-duration: 1s, 1s;  
+  -moz-transition-timing-function: linear, ease-in;
+  
+  -o-transition-property:color, background, transform;  
+  -o-transition-duration: 1s, 1s;  
+  -o-transition-timing-function: linear, ease-in;
+  
+  transition-property:color, background, transform;  
+  transition-duration: 1s, 1s;  
+  transition-timing-function: linear, ease-in;
 }
 
 /* Styles for two-character emoticons that need more letter-spacing for proportionality */
